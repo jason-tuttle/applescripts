@@ -5,7 +5,7 @@ tell application id "com.figure53.QLab.5" to tell front workspace
 	set devamp_full_ring_cue to cue "2.3" -- a devamp for the full ring audio cue
 	set ring_decision_point to ((duration of full_ring_cue) - (duration of ring_out_cue)) -- calculates where the active ringing stops
 	set cueTime to action elapsed of full_ring_cue
-	if (cueTime mod 6.0) < ring_decision_point then
+	if (cueTime mod (duration of full_ring_cue) < ring_decision_point) then
 		start stop_full_ring_cue
 		start ring_out_cue
 	else
